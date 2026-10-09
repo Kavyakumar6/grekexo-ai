@@ -1,0 +1,10 @@
+{
+  "name": "Grekexo AI",
+  "short_name": "Grekexo",
+  "description": "A study-first all-round AI companion",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d1020",
+  "theme_color": "#101322",
+  "icons": [{"src":"logo.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

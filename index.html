@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101322">
+  <meta name="description" content="Grekexo AI — your study-first all-round assistant.">
+  <title>Grekexo AI</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <img src="logo.svg" alt="Grekexo AI logo" class="brand-logo">
+        <div><strong>Grekexo AI</strong><small>Your personal co-pilot</small></div>
+      </div>
+      <button class="new-chat" id="newChatBtn">＋ <span>New chat</span></button>
+      <div class="side-label">RECENT CHATS</div>
+      <div id="historyList" class="history-list"></div>
+      <div class="sidebar-bottom">
+        <button class="side-action" id="settingsBtn">⚙ <span>Settings & API</span></button>
+        <button class="side-action" id="themeBtn">◐ <span>Toggle light / dark</span></button>
+        <div class="privacy-note">Prototype · API calls use your own key</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menuBtn" aria-label="Open menu">☰</button>
+        <div class="top-title"><span class="status-dot"></span><span id="headerChatTitle">Grekexo AI</span></div>
+        <button class="icon-btn" id="topSettingsBtn" aria-label="Settings">⚙</button>
+      </header>
+
+      <section class="welcome" id="welcome">
+        <div class="hero-logo-wrap"><img src="logo.svg" alt="" class="hero-logo"></div>
+        <p class="eyebrow">YOUR STUDY-FIRST AI COMPANION</p>
+        <h1>Hey there. <span>I'm Grekexo.</span></h1>
+        <p class="welcome-copy">Ask me about studies, science, agriculture, editing, ideas, or everyday problems. We'll figure it out together.</p>
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="Explain photosynthesis for Class 12 in simple Hinglish with a diagram-style summary."><b>📚</b><span><strong>Study smarter</strong><small>Class 12 Biology, explained simply</small></span><span class="arrow">↗</span></button>
+          <button class="suggestion" data-prompt="I have household waste. Explain what goes in wet waste, dry waste, and compost, in simple Hindi."><b>🌱</b><span><strong>Everyday solutions</strong><small>Practical, eco-friendly advice</small></span><span class="arrow">↗</span></button>
+          <button class="suggestion" data-prompt="Give me a professional anime edit concept with a hook, pacing, transitions, and caption."><b>🎬</b><span><strong>Creative mode</strong><small>Editing ideas and workflows</small></span><span class="arrow">↗</span></button>
+          <button class="suggestion" data-prompt="Help me plan my day with time for school studies, breaks, sleep, and hobbies."><b>🧠</b><span><strong>Plan with me</strong><small>Build a balanced routine</small></span><span class="arrow">↗</span></button>
+        </div>
+      </section>
+
+      <section id="chatArea" class="chat-area" aria-live="polite"></section>
+      <div class="composer-wrap">
+        <div class="composer" id="composer">
+          <textarea id="messageInput" rows="1" placeholder="Message Grekexo..." aria-label="Message Grekexo"></textarea>
+          <div class="composer-tools">
+            <div class="composer-hint"><span class="tiny-spark">✦</span> Study-first · all-round help</div>
+            <div class="composer-buttons">
+              <button class="icon-btn voice-btn" id="voiceBtn" title="Speak to Grekexo" aria-label="Speak to Grekexo">☎</button>
+              <button class="send-btn" id="sendBtn" aria-label="Send message">↑</button>
+            </div>
+          </div>
+        </div>
+        <p class="disclaimer">Grekexo can make mistakes. Verify important academic, medical, legal, and farming decisions.</p>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="modal-head"><div><p class="eyebrow">PERSONALISE YOUR CO-PILOT</p><h2 id="settingsTitle">Settings</h2></div><button class="icon-btn" id="closeSettings" aria-label="Close">✕</button></div>
+      <label for="apiKeyInput">OpenAI API key</label>
+      <input id="apiKeyInput" type="password" autocomplete="off" placeholder="Paste a new API key here">
+      <p class="field-help">For this prototype, the key is kept only in this browser tab's session memory and is not written into the project files. Never share it or publish it on GitHub. API usage may cost money.</p>
+      <label for="modelSelect">Model</label>
+      <select id="modelSelect">
+        <option value="gpt-4o-mini">gpt-4o-mini (quick, economical)</option>
+        <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+      </select>
+      <label for="languageSelect">Reply style</label>
+      <select id="languageSelect">
+        <option value="auto">Match my language (recommended)</option>
+        <option value="hinglish">Hindi + English (Hinglish)</option>
+        <option value="english">English</option>
+        <option value="hindi">Hindi</option>
+      </select>
+      <div class="setting-row"><div><strong>Read replies aloud</strong><small>Uses your phone's speech engine</small></div><label class="switch"><input type="checkbox" id="speakToggle"><span></span></label></div>
+      <div class="modal-actions"><button class="secondary-btn" id="forgetKeyBtn">Forget key</button><button class="primary-btn" id="saveSettingsBtn">Save settings</button></div>
+      <p class="modal-status" id="settingsStatus"></p>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
